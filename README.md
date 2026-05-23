@@ -87,4 +87,4 @@ npm run dev
 
 Daniel Tirado Acevedo CC 1037590632
 Lorena Ruiz Pérez 1026140973
- f27dcd3 (Primer avance proyecto integrador)
+ f27dcd3 (Segundo momento proyecto integrador)
