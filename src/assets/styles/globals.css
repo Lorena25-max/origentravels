@@ -1,13 +1,13 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: lightblue;
+  background-color: #FFFBF0;
   padding: 0;
   font-size: medium;
 }
 
 main {
-  background-color: azure;
+  background-color: #FFFBF0;
 }
 
 /* Estructura vertical correcta */
@@ -34,7 +34,7 @@ main {
 /* Footer tamaño normal */
 .footer {
   padding: 20px;
-  background: #2b6d8b;
+  background: #999950;
 }
 
 .footer container footer-content{
@@ -72,7 +72,7 @@ main {
 
 .header {
   width: 100%;
-  background-color: #2b6d8b;
+  background-color: #999950;
   position: sticky;
   top: 0;
   align-items: center;
@@ -103,11 +103,11 @@ main {
 
 .slogan{
   font-size: 1rem;
-  color: black;
+  color: #999950;
   text-align: left;
   font-weight: bold;
   margin: 0;
-  background-color: lightblue;
+  background-color: #FFFBF0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -116,17 +116,27 @@ main {
 }
 
 .booking{
-  padding: 8px 8px;
-  background: white;
-  border-radius: 10px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #D4AF37, #b08d2b);
+
+  border: none;
+  border-radius: 12px;
+
   cursor: pointer;
-  transition: 0.3s;
-  font-weight: bold;
+
+  font-weight: 600;
+  color: #ffffff;
+
+  transition: all 0.3s ease;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 .booking:hover {
-  background-color: #D4AF37;
-  color: white;
+  background: #999950;
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
 
 .nav {
@@ -137,62 +147,45 @@ main {
 }
 
 .nav-btn {
-  padding: 8px 8px;
-  background: white;
-  border-radius: 10px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #D4AF37, #b08d2b);
+
+  border: none;
+  border-radius: 12px;
+
   cursor: pointer;
-  transition: 0.3s;
-  font-weight: bold;
+
+  font-weight: 600;
+  color: #ffffff;
+
+  transition: all 0.3s ease;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 .nav-btn:hover {
-  background-color: #D4AF37;
-  color: white;
+  background: #999950;
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
 
-img{
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.logo {
   width: 110px;
   height: 110px;
 }
 
 
-.hero {
-  width: 100%;
-  height: 80vh; /* altura de la sección */
-  background: url("/src/assets/images/medellin.jpg") no-repeat center center;
-  background-size: cover;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-/* Capa oscura encima de la imagen */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* oscurece la imagen */
-}
-
-/* Contenido encima */
-.hero-content {
-  position: relative;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  z-index: 1;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 322px;
-}
 
 /* Tours */
 .tours {
   padding: 80px 0;
-  background-color: lightblue;
+  background-color: #FFFBF0;
   text-align: center;
 }
 
@@ -200,11 +193,22 @@ img{
   margin-bottom: 40px;
 }
 
+
+h1, h2, h3 {
+  font-family: inherit;
+}
+
+h2 {
+  color: #999950;
+}
+
 .tours-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  padding: 40px 0;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .tour-card {
@@ -214,6 +218,32 @@ img{
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   text-align: center;
   padding-bottom: 15px;
+}
+
+.tour-btn {
+  background: linear-gradient(135deg, #D4AF37, #b08d2b);
+  color: white;
+
+  border: none;
+  outline: none;
+
+  padding: 12px 20px;
+  border-radius: 14px;
+
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.tour-btn:hover {
+  background: #999950;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 
 .tour-card img {
@@ -265,7 +295,7 @@ img{
 /* BOTÓN */
 .contact-card button {
   padding: 12px;
-  background-color: #6c8f7c;
+  background-color: #999950;
   color: white;
   border: none;
   border-radius: 8px;
@@ -302,16 +332,588 @@ img{
 .reserva-card textarea {
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #999950;
   font-family: inherit;
 }
 
 /* BOTÓN */
 .reserva-card button {
   padding: 12px;
-  background-color: #6c8f7c;
+  background-color: #999950;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+/* =========================
+   LOGIN Y REGISTRO
+========================= */
+
+.login,
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: 70vh;
+}
+
+/* TARJETA */
+
+.login-card,
+.register-card {
+  background: white;
+  width: 100%;
+  max-width: 450px;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* TITULOS */
+
+.login-card h2,
+.register-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #999950;
+}
+
+/* FORMULARIOS */
+
+.login-card form,
+.register-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* INPUTS */
+
+.login-card input,
+.register-card input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+/* EFECTO FOCUS */
+
+.login-card input:focus,
+.register-card input:focus {
+  outline: none;
+  border-color: #999950;
+  box-shadow: 0 0 6px rgba(43,109,139,0.3);
+}
+
+/* BOTONES */
+
+.login-card button,
+.register-card button {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background-color: #999950;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER BOTONES */
+
+.login-card button:hover,
+.register-card button:hover {
+  background-color: #D4AF37;
+}
+
+/* TEXTO ABAJO */
+
+.auth-extra {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.auth-extra a {
+  color: #999950;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-extra a:hover {
+  color: #D4AF37;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
+  padding: 40px 20px;
+}
+
+.dashboard-header {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #999950;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* TABLA RESERVAS */
+
+.reservas-container {
+  margin-top: 40px;
+}
+
+.tabla-reserva {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.acciones button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.acciones button:first-child {
+  background-color: #D4AF37;
+  color: white;
+}
+
+.acciones button:last-child {
+  background-color: #c0392b;
+  color: white;
+}
+
+/* =========================
+   DASHBOARD MEJORADO
+========================= */
+
+.dashboard-stats {
+  background-color: #999950;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 150px;
+}
+
+.dashboard-stats h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.dashboard-stats p {
+  margin: 5px 0 0;
+}
+
+/* EMPTY STATE */
+
+.empty-state {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.empty-state h3 {
+  color: #999950;
+}
+
+/* LOADING */
+
+.loading-screen {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LOGOUT */
+
+.logout-btn {
+  background-color: #c0392b;
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: #922b21;
+}
+
+/* =========================
+   FORMULARIO CENTRADO
+========================= */
+
+.reserva-form-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+/* PRECIOS */
+
+.precio-preview {
+  background-color: #f4f8fb;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.precio-preview p {
+  margin: 0;
+  color: #999950;
+}
+
+.precio-preview h3 {
+  margin-top: 10px;
+  color: #D4AF37;
+}
+
+/* RESERVAS FULL WIDTH */
+
+.reservas-container {
+  width: 100%;
+}
+
+/* TOTAL GENERAL */
+
+.total-general {
+  background-color: #999950;
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* 
+Desde aquí puedo borrar porque son las gráficas */
+
+/* =========================
+   ANALYTICS
+========================= */
+
+.analytics-page {
+  padding: 40px 20px;
+}
+
+.analytics-title {
+  text-align: center;
+  color: #999950;
+  margin-bottom: 40px;
+}
+
+.analytics-section {
+  margin-bottom: 70px;
+}
+
+.analytics-section h2 {
+  margin-bottom: 25px;
+  color: #999950;
+}
+
+.analytics-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 30px;
+
+}
+
+.analytics-grid img {
+
+  width: 100%;
+
+  height: 220px;
+
+  object-fit: contain;
+
+  background-color: white;
+
+  border-radius: 16px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+
+  .analytics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* =========================
+   HOME PREMIUM FIXED
+========================= */
+
+/* HERO PREMIUM */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+
+  /* IMAGEN + OVERLAY REAL */
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.15) 40%,
+      rgba(255, 251, 240, 0.10) 75%,
+      #FFFBF0 100%
+    ),
+    url("/images/medellin.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+
+  /* FIX IMPORTANTE: evita conflictos globales */
+  isolation: isolate;
+}
+
+/* CAPA EXTRA (MEJOR CONTROL DE LUZ) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+/* CONTENIDO HERO */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 850px;
+  padding: 20px;
+  animation: fadeUp 1.2s ease;
+}
+
+.hero-content h1 {
+  font-size: 5rem;
+  margin-bottom: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.hero-content p {
+  font-size: 1.35rem;
+  line-height: 1.9;
+  margin-bottom: 40px;
+  color: rgba(255,255,255,0.95);
+  text-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+
+/* BOTÓN HERO */
+.hero-btn {
+  padding: 15px 32px;
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #D4AF37, #b08d2b);
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.hero-btn:hover {
+  background: #999950;
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+/* SECCIONES */
+.experience,
+.gallery,
+.cta-home {
+  position: relative;
+  z-index: 2;
+}
+
+/* EXPERIENCIA */
+.experience {
+  padding: 100px 20px;
+  text-align: center;
+
+  background: linear-gradient(
+    to bottom,
+    #FFFBF0,
+    #f8f5e9
+  );
+}
+
+.experience h2 {
+  color: #999950;
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+
+.experience-text {
+  max-width: 850px;
+  margin: 0 auto 60px auto;
+  line-height: 1.9;
+  color: #555;
+  font-size: 1.08rem;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.experience-card {
+  background: rgba(255,255,255,0.9);
+  padding: 35px;
+  border-radius: 22px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.experience-card:hover {
+  transform: translateY(-8px);
+}
+
+/* GALERÍA */
+.gallery {
+  padding: 100px 20px;
+  background-color: #f8f5e9;
+  text-align: center;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* CTA FINAL */
+.cta-home {
+  padding: 110px 20px;
+  text-align: center;
+
+  background: linear-gradient(
+    to bottom,
+    #f8f5e9,
+    #FFFBF0
+  );
+}
+
+.gallery h2 {
+  color: #999950 !important;
+}
+
+.cta-home h2 {
+  color: #999950 !important;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-content h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .gallery-grid img {
+    height: 260px;
+  }
 }

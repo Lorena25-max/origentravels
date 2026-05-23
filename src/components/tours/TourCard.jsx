@@ -1,8 +1,7 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function TourCard({ title, image, description, price }) {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="tour-card">
@@ -11,7 +10,7 @@ function TourCard({ title, image, description, price }) {
       <p>{description}</p>
       <span className="price">${price}</span>
 
-      <button onClick={() => navigate("/reserva")}>
+      <button className="tour-btn">
         Reservar
       </button>
     </div>

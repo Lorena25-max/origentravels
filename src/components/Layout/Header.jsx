@@ -23,7 +23,7 @@ function Header() {
             <header className="header">
                 <div className="container header-content">
 
-                    {/* 🔥 Logo ahora redirige al home */}
+                    
                     <Link to="/">
                         <img 
                             src={logo} 
