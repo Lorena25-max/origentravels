@@ -1,29 +1,41 @@
+import { useEffect, useState } from "react"
+import { obtenerPaquetes } from "../../api/paqueteApi"
+
 function ReservasTable({
   reservas,
   onDelete,
   onEdit
 }) {
 
-  const PAQUETES = {
+  const [paquetes, setPaquetes] =
+    useState([])
 
-    PT001: {
-      nombre: "Tour Café",
-      precio: 180000
-    },
+  useEffect(() => {
 
-    PT002: {
-      nombre: "Guatapé",
-      precio: 250000
-    },
+    cargarPaquetes()
 
-    PT003: {
-      nombre: "Comuna 13",
-      precio: 120000
-    }
+  }, [])
+
+  const cargarPaquetes = async () => {
+
+    const data =
+      await obtenerPaquetes()
+
+    setPaquetes(data)
 
   }
 
-  // 🔥 total general REAL backend
+  // 🔥 buscar paquete real
+  const obtenerPaquete = (id) => {
+
+    return paquetes.find(
+      paquete =>
+        paquete.idpaquete === id
+    )
+
+  }
+
+  // 🔥 total general
   const totalGeneral = reservas.reduce(
 
     (acc, reserva) =>
@@ -67,9 +79,9 @@ function ReservasTable({
               reservas.map((reserva) => {
 
                 const paquete =
-                  PAQUETES[
+                  obtenerPaquete(
                     reserva.idepaquete
-                  ]
+                  )
 
                 return (
 
@@ -81,7 +93,7 @@ function ReservasTable({
                     <h3>
 
                       {
-                        paquete?.nombre
+                        paquete?.nompaquete
                       }
 
                     </h3>

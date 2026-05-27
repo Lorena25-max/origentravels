@@ -1,59 +1,75 @@
 import { useEffect, useState } from "react"
 
-const PAQUETES = {
+import { useSearchParams } from "react-router-dom"
 
-  PT001: {
-    nombre: "Tour Café",
-    precio: 180000
-  },
-
-  PT002: {
-    nombre: "Guatapé",
-    precio: 250000
-  },
-
-  PT003: {
-    nombre: "Comuna 13",
-    precio: 120000
-  }
-
-}
+import { obtenerPaquetes } from "../../api/paqueteApi"
 
 const initialState = {
-
   idepaquete: "",
-
   fechaviaje: "",
-
   cantidadpersonas: 1
-
 }
 
-function ReservaForm({
-  onSubmit,
-  editando
-}) {
+function ReservaForm({ onSubmit, editando }) {
 
   const [formData, setFormData] =
     useState(initialState)
 
+  const [paquetes, setPaquetes] =
+    useState([])
+
+  const [searchParams] =
+    useSearchParams()
+
+  // 🔥 cargar paquetes reales backend
   useEffect(() => {
+
+    cargarPaquetes()
+
+  }, [])
+
+  const cargarPaquetes = async () => {
+
+    const data =
+      await obtenerPaquetes()
+
+    setPaquetes(data)
+
+  }
+
+  // 🔥 autocompletar paquete URL
+  useEffect(() => {
+
+    const paqueteURL =
+      searchParams.get("paquete")
 
     if (editando) {
 
       setFormData(editando)
 
-    } else {
-
-      setFormData(initialState)
+      return
 
     }
 
-  }, [editando])
+    if (paqueteURL) {
+
+      setFormData((prev) => ({
+        ...prev,
+        idepaquete: paqueteURL
+      }))
+
+      return
+
+    }
+
+    setFormData(initialState)
+
+  }, [editando, searchParams])
 
   const handleChange = (e) => {
 
-    const { name, value } = e.target
+    const { name, value } =
+      e.target
 
     if (name === "cantidadpersonas") {
 
@@ -64,44 +80,43 @@ function ReservaForm({
     }
 
     setFormData({
-
       ...formData,
-
       [name]: value
-
     })
 
   }
+
+  // 🔥 paquete seleccionado REAL
+  const paqueteSeleccionado =
+    paquetes.find(
+
+      (p) =>
+        p.idpaquete ===
+        formData.idepaquete
+
+    )
 
   const handleSubmit = (e) => {
 
     e.preventDefault()
 
-    // 🔥 usuario logueado REAL
     const usuario =
-      JSON.parse(localStorage.getItem("user"))
-
-    const paqueteSeleccionado =
-      PAQUETES[formData.idepaquete]
+      JSON.parse(
+        localStorage.getItem("user")
+      )
 
     const total =
-      paqueteSeleccionado.precio
-      *
+      paqueteSeleccionado.precio *
       Number(formData.cantidadpersonas)
 
     const reservaCompleta = {
 
       idreserva:
+        editando?.idreserva ||
+        `R${Math.floor(
+          100 + Math.random() * 900
+        )}`,
 
-  editando?.idreserva
-
-  ||
-
-  `R${Math.floor(
-    100 + Math.random() * 900
-  )}`,
-
-      // 🔥 CLIENTE REAL
       idecliente:
         usuario.idecliente,
 
@@ -116,15 +131,16 @@ function ReservaForm({
       fechaviaje:
         formData.fechaviaje,
 
-      totalpagado: total,
+      totalpagado:
+        total,
 
       cantidadpersonas:
         Number(
           formData.cantidadpersonas
         ),
 
-      estado: "ACTIVA"
-
+      estado:
+        "PENDIENTE PAGO"
     }
 
     onSubmit(reservaCompleta)
@@ -140,82 +156,66 @@ function ReservaForm({
       <div className="reserva-card">
 
         <h2>
-
           {
             editando
               ? "Editar Reserva"
               : "Nueva Reserva"
           }
-
         </h2>
 
         <form onSubmit={handleSubmit}>
 
           <select
-
             name="idepaquete"
-
             value={formData.idepaquete}
-
             onChange={handleChange}
-
             required
-
           >
 
             <option value="">
               Selecciona un tour
             </option>
 
-            <option value="PT001">
-              ☕ Tour Café
-            </option>
+            {
 
-            <option value="PT002">
-              🏞️ Guatapé
-            </option>
+              paquetes.map((paquete) => (
 
-            <option value="PT003">
-              🎨 Comuna 13
-            </option>
+                <option
+                  key={paquete.idpaquete}
+                  value={paquete.idpaquete}
+                >
+
+                  {paquete.nompaquete}
+
+                </option>
+
+              ))
+
+            }
 
           </select>
 
           <input
-
             type="date"
-
             name="fechaviaje"
-
             value={formData.fechaviaje}
-
             onChange={handleChange}
-
             required
-
           />
 
           <input
-
             type="number"
-
             name="cantidadpersonas"
-
             min="1"
-
             max="4"
-
             value={formData.cantidadpersonas}
-
             onChange={handleChange}
-
             required
-
           />
 
           {
 
-            formData.idepaquete && (
+            paqueteSeleccionado && (
 
               <div className="precio-preview">
 
@@ -227,11 +227,9 @@ function ReservaForm({
 
                   {
 
-                    PAQUETES[
-                      formData.idepaquete
-                    ]
-                    .precio
-                    .toLocaleString()
+                    paqueteSeleccionado
+                      .precio
+                      ?.toLocaleString()
 
                   }
 
@@ -246,14 +244,9 @@ function ReservaForm({
                   {
 
                     (
-                      PAQUETES[
-                        formData.idepaquete
-                      ]
-                      .precio
-                      *
+                      paqueteSeleccionado.precio *
                       formData.cantidadpersonas
-                    )
-                    .toLocaleString()
+                    ).toLocaleString()
 
                   }
 
@@ -268,9 +261,11 @@ function ReservaForm({
           <button type="submit">
 
             {
+
               editando
                 ? "Actualizar"
                 : "Reservar"
+
             }
 
           </button>

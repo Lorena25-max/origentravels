@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import medellin from "../assets/images/centromedellin.jfif";
 import comuna from "../assets/images/comuna.jfif";
 import guatape from "../assets/images/guatape.jfif";
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <>
       {/* HERO */}
@@ -14,9 +16,12 @@ function Home() {
             cómodas y memorables.
           </p>
 
-          <button className="hero-btn">
-            Explorar experiencias
-          </button>
+          <button
+  className="hero-btn"
+  onClick={() => navigate("/tours")}
+>
+  Explorar experiencias
+</button>
         </div>
       </section>
 
@@ -69,9 +74,12 @@ function Home() {
           <h2>Tu próxima experiencia comienza aquí</h2>
           <p>Descubre planes, tours y experiencias diseñadas para ti.</p>
 
-          <button className="hero-btn">
-            Ver servicios
-          </button>
+          <button
+  className="hero-btn"
+  onClick={() => navigate("/tours")}
+>
+  Ver servicios
+</button>
         </div>
       </section>
     </>

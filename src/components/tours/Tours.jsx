@@ -1,3 +1,4 @@
+
 import { useEffect } from "react"
 import TourCard from "./TourCard"
 
@@ -20,42 +21,42 @@ function Tours() {
       title: "Tour Comuna 13",
       image: comuna,
       description: "Explora el arte urbano y la historia.",
-      price: 50
+      
     },
     {
       id: 2,
       title: "Guatapé y Piedra del Peñol",
       image: guatape,
       description: "Disfruta paisajes increíbles.",
-      price: 80
+      
     },
     {
       id: 3,
       title: "Tour de café",
       image: cafe,
       description: "Explora el arte del buen café.",
-      price: 50
+      
     },
     {
       id: 4,
       title: "Conoce Jardín",
       image: jardin,
       description: "Disfruta paisajes increíbles.",
-      price: 80
+      
     },
     {
       id: 5,
       title: "Tour centro histórico",
       image: centromedellin,
       description: "Explora el centro histórico de Medellín, su arte y su cultura.",
-      price: 50
+      
     },
     {
       id: 6,
       title: "Santa fe de Antioquia",
       image: santafeantioquia,
       description: "Disfruta de un pueblo hermoso con arquitectura colonial.",
-      price: 80
+      
     }
   ]
 

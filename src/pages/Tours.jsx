@@ -1,78 +1,113 @@
-import TourCard from "../components/tours/TourCard.jsx";
+import { useEffect, useState } from "react"
 
-import guatape from "../assets/images/guatape.jfif";
-import comuna from "../assets/images/comuna.jfif";
-import cafe from "../assets/images/cafe.jfif";
-import jardin from"../assets/images/jardin.jfif";
-import centromedellin from "../assets/images/centromedellin.jfif";
-import santafeantioquia from "../assets/images/santafeantioquia.jfif";
+import TourCard from "../components/tours/TourCard"
 
+import { obtenerPaquetes }
+from "../api/paqueteApi"
+
+import guatape
+from "../assets/images/guatape.jfif"
+
+import comuna
+from "../assets/images/comuna.jfif"
+
+import cafe
+from "../assets/images/cafe.jfif"
+
+import jardin
+from "../assets/images/jardin.jfif"
+
+import centromedellin
+from "../assets/images/centromedellin.jfif"
+
+import santafeantioquia
+from "../assets/images/santafeantioquia.jfif"
 
 function Tours() {
 
-  const tours = [
-    {
-      id: 1,
-      title: "Tour Comuna 13",
-      image: comuna,
-      description: "Explora el arte urbano y la historia.",
-      price: 50
-    },
-    {
-      id: 2,
-      title: "Guatapé y Piedra del Peñol",
-      image: guatape,
-      description: "Disfruta paisajes increíbles.",
-      price: 80
-    },
-    {
-      id: 3,
-      title: "Tour de café",
-      image: cafe,
-      description: "Explora el arte del buen café.",
-      price: 50
-    },
-    {
-      id: 4,
-      title: "Conoce Jardín",
-      image: jardin,
-      description: "Disfruta paisajes increíbles.",
-      price: 80
-    },
-    {
-      id: 5,
-      title: "Tour centro histórico",
-      image: centromedellin,
-      description: "Explora el centro histórico de Medellín, su arte y su cultura.",
-      price: 50
-    },
-    {
-      id: 6,
-      title: "Santa fe de Antioquia",
-      image: santafeantioquia,
-      description: "Disfruta de un pueblo hermoso con arquitectura colonial.",
-      price: 80
-    }
-  ];
+  const [tours, setTours] =
+    useState([])
 
+  // 🔥 imágenes locales
+  const imagenes = {
+
+    PT001: guatape,
+
+    PT002: santafeantioquia,
+
+    PT003: comuna,
+
+    PT004: centromedellin,
+
+    PT005: cafe,
+
+    PT006: jardin
+
+  }
+
+  useEffect(() => {
+
+    cargarPaquetes()
+
+  }, [])
+
+  const cargarPaquetes = async () => {
+
+    const data =
+      await obtenerPaquetes()
+
+    setTours(data)
+
+  }
 
   return (
+
     <section className="tours">
-      <h2>Nuestros Tours</h2>
+
+      <h2>
+        Nuestros Tours
+      </h2>
 
       <div className="tours-container">
-        {tours.map((tour) => (
-          <TourCard
-            key={tour.id}
-            title={tour.title}
-            image={tour.image}
-            description={tour.description}
-            price={tour.price}
-          />
-        ))}
+
+        {
+
+          tours.map((tour) => (
+
+            <TourCard
+
+              key={tour.idpaquete}
+
+              idpaquete={
+                tour.idpaquete
+              }
+
+              title={
+                tour.nompaquete
+              }
+
+              image={
+                imagenes[
+                  tour.idpaquete
+                ]
+              }
+
+              description={
+                tour.incluye
+              }
+
+            />
+
+          ))
+
+        }
+
       </div>
+
     </section>
-  );
+
+  )
+
 }
 
-export default Tours;
+export default Tours

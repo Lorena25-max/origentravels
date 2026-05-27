@@ -1,12 +1,26 @@
 import axiosConfig from "./axiosConfig"
 
-// 🔥 OBTENER
+// 🔥 OBTENER SOLO RESERVAS DEL USUARIO
 export const obtenerReservas = async () => {
 
   try {
 
+    // 🔥 obtener usuario logueado
+    const user =
+      JSON.parse(localStorage.getItem("user"))
+
+    // 🔥 validar usuario
+    if (!user || !user.idecliente) {
+
+      return []
+
+    }
+
+    // 🔥 endpoint filtrado
     const response =
-      await axiosConfig.get("/reservas")
+      await axiosConfig.get(
+        `/reservas/cliente/${user.idecliente}`
+      )
 
     return response.data
 
